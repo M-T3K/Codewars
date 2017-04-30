@@ -1,5 +1,5 @@
 # Codewars
-func Codewars(solutions string) source {
-  return Solution.getSourceCode();
+func Codewars(Kata kata) solution {
+  return Kata.getSolution();
 } 
 // My GoLang jokes ;)
