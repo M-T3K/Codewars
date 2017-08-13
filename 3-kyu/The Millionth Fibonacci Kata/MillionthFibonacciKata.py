@@ -1,5 +1,6 @@
 # Kata can be found at: https://www.codewars.com/kata/53d40c1e2f13e331fc000c26
-# Okay by handle negs it means to actually do the fibo for n < 0
+
+# Okay by handle negatives, what the Kata is tring to say is to actually do the fibo for n < 0
 def fib(num):
     if num < 0:
         return -1 * fibo(-1 * num)[0] if num % 2 == 0 else fibo(-1 * num)[0]
