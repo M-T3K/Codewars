@@ -1,5 +1,2 @@
 # Codewars
-func Codewars(Kata kata) solution {
-  return Kata.getSolution();
-} 
-// My GoLang jokes ;)
+The Solutions to all the Katas I have successfully completed / Created / Translated.
