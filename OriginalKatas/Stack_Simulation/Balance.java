@@ -67,6 +67,14 @@ public class Balance {
 	}
 	// -------------------------------------------------------------
 
+	// Just as above, not really a 'push()', but simulates it well enough
+	// for our purpose
+	private int push(int stack, char ch, int base) {
+
+		return stack * base + getValueFromChar(ch);
+	}
+	// -------------------------------------------------------------
+
 	public boolean isBalanced(String str, int stack, int idx) {
 		
 		if(idx >= str.length()) {
@@ -78,7 +86,7 @@ public class Balance {
 		if(opens(ch)) {
 
 			// if it is an open brace, we save it on the Stack in base 4
-			stack = stack * 4 + getValueFromChar(ch);
+			stack = push(stack, ch, 4);
 			// and we move on to the next element
 			return isBalanced(str, stack, ++idx);
 		}
