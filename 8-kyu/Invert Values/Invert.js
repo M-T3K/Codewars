@@ -1,0 +1,1 @@
+const invert = (array) => array.map((x) => (0 - x));
