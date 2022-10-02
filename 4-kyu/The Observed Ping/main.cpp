@@ -11,26 +11,6 @@
 #include <vector>
 #include <unordered_map>
 
-
-// @info Better Solution now that I have had some more time to think about it
-std::vector<string> get_pins(const std::string &observed, const std::string &prefix = "")
-{
-    static const std::unordered_map<char, std::string> neighbors =
-    {
-        {'1', "124"},  {'2', "1235"},  {'3', "236"},
-        {'4', "1457"}, {'5', "24568"}, {'6', "3569"},
-        {'7', "478"},  {'8', "05789"}, {'9', "689"},
-                       {'0', "08"}
-    };
-    if ( !observed.size() ) return {prefix};
-    std::vector<string> pins;
-    for (auto c : neighbors.at(observed[0]))
-        for (auto pin : get_pins(observed.substr(1), prefix + c))
-            pins.push_back(pin);
-    return pins;
-}
-
-
 // ┌───┬───┬───┐
 // │ 1 │ 2 │ 3 │
 // ├───┼───┼───┤
@@ -42,8 +22,38 @@ std::vector<string> get_pins(const std::string &observed, const std::string &pre
 //     └───┘
 
 
+// @info Better Solution now that I have had some more time to think about it
+// @credits Its almost the same as other solutions because I did it a couple of days after I saw those, so credit to those.
+static const std::unordered_map<char, std::string> neighbors =
+    {
+        {'1', "124"},  
+        {'2', "1235"},  
+        {'3', "236"},
+        {'4', "1457"}, 
+        {'5', "24568"}, 
+        {'6', "3569"},
+        {'7', "478"},  
+        {'8', "05789"}, 
+        {'9', "689"},
+        {'0', "08"}
+    };
+
+std::vector<std::string> get_pins(const std::string &observed, const std::string &prefix = "")
+{
+    
+    if ( !observed.size() ) return {prefix};
+    std::vector<std::string> pins;
+    for (auto c : neighbors.at(observed[0]))
+        for (auto pin : get_pins(observed.substr(1), prefix + c))
+            pins.push_back(pin);
+    return pins;
+}
+
+
+
+
 // @info Very Crappy Solution due to lack of time to figure out how to do recursion
-std::vector<std::string> get_pins(std::string observed) {
+std::vector<std::string> get_pins_bad(std::string observed) {
 
     std::unordered_map<std::string, std::vector<std::string>> combs;
     combs["0"] = {"0", "8"};
