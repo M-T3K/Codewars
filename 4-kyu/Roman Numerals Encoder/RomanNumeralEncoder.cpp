@@ -10,14 +10,10 @@ std::string solution(int number){
   for (Dictio const* curr = dictionary; curr -> val > 0; ++curr)  {
   
     while (number >= curr -> val)  {
-    
       number -= curr -> val;
       toRoman += curr -> romanNumeral;
-      
     }
-    
   }
-  
   return toRoman;
   
 }
